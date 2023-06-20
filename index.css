@@ -10,7 +10,7 @@ body {
 
 .container-calculator {
   background: #33FFE3;
-  height: 700px;
+  height: 800px;
   width: 450px;
   border-style: solid;
   border: 10mm ridge rgba(211, 220, 50, .6);
@@ -78,7 +78,7 @@ body {
   text-align: center;
   height: 70px;
   width: 190px;
-  margin-left: 20px;
+  margin-left: 25px;
   border: 5px;
   display: inline-block;
   border: 2px;
@@ -87,16 +87,5 @@ body {
   border-radius: 10px;
 }
 
-.equal-div > button {
-  margin-top: 10px;
-  font-size: 30px;
-  height: 50px;
-  width: 50px;
-  display: inline-block;
-  font-weight: extra bold;
-  border-radius: 5px;
-}
 
-.numbers.operators > button {
-  display: block;
-}
+
