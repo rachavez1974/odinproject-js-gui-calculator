@@ -115,11 +115,16 @@ function displayInput(e){
     operatorsStack = []
     display.value = ""
     break;
+  case '.':
+    document.getElementById('.').display = true;
+    inputString += input
+    break;
   case "X":
   case "-":
   case "/":
   case "+":
   case "%":
+    document.getElementById('.').display = false;
     valuesStack.push(inputString)
     inputString = ""
     operatorsStack.push(input)
@@ -146,6 +151,7 @@ function displayInput(e){
     display.value = inputString
   }
 
+
   if(valuesStack.length === 2){
     numberTwo = valuesStack.pop()
     numberOne = valuesStack.pop()
@@ -165,6 +171,7 @@ function makeNumberDivs(){
   return [1, 2, 3, '/', 4, 5, 6, 'X', 7, 8, 9, '-', 0, 'AC', '+', '.', '=', '%'].map(input => {
     let numbDiv = document.createElement('div')
     numbDiv.classList.add('numbers')
+    numbDiv.id = input
     if(input === '=' || input === "AC"){
       numbDiv.classList.add('equal-div')
     }
