@@ -20,9 +20,65 @@ const sum = function(numbers) {
   (accumulator, currentValue) => accumulator + currentValue, 0)
 };
 
+const multiply = (numbers) => {
+  if(numbers.some(hasFloatNumbers)){
+    numbers = [parseFloat(numbers[0]), parseFloat(numbers[1])]
+  }else{
+    numbers = [parseInt(numbers[0]), parseInt(numbers[1])]
+  }
+
+  return numbers.reduce(
+  (accumulator, currentValue) => accumulator * currentValue)
+}
+
+const divide = (numbers) => {
+  if(numbers.some(hasFloatNumbers)){
+    numbers = [parseFloat(numbers[0]), parseFloat(numbers[1])]
+  }else{
+    numbers = [parseInt(numbers[0]), parseInt(numbers[1])]
+  }
+
+  return numbers.reduce(
+  (accumulator, currentValue) => accumulator / currentValue)
+}
+
+const subtract = (numbers) => {
+  if(numbers.some(hasFloatNumbers)){
+    numbers = [parseFloat(numbers[0]), parseFloat(numbers[1])]
+  }else{
+    numbers = [parseInt(numbers[0]), parseInt(numbers[1])]
+  }
+
+  return numbers.reduce(
+  (accumulator, currentValue) => accumulator - currentValue)
+}
+
+const mod = (numbers) => {
+  if(numbers.some(hasFloatNumbers)){
+    numbers = [parseFloat(numbers[0]), parseFloat(numbers[1])]
+  }else{
+    numbers = [parseInt(numbers[0]), parseInt(numbers[1])]
+  }
+
+  return numbers.reduce(
+  (accumulator, currentValue) => accumulator % currentValue)
+}
+
+
+
+
 function operate(numbersAndOperator){
+  console.log(numbersAndOperator)
   if(numbersAndOperator.includes('+')){
     return sum([numbersAndOperator[0], numbersAndOperator[2]])
+  }else if(numbersAndOperator.includes('X')){
+    return multiply([numbersAndOperator[0], numbersAndOperator[2]])
+  }else if(numbersAndOperator.includes('/')){
+    return divide([numbersAndOperator[0], numbersAndOperator[2]])
+  }else if(numbersAndOperator.includes('-')){
+    return subtract([numbersAndOperator[0], numbersAndOperator[2]])
+  }else if(numbersAndOperator.includes('%')){
+    return mod([numbersAndOperator[0], numbersAndOperator[2]])
   }
 }
 
@@ -47,6 +103,7 @@ function displayInput(e){
   case "-":
   case "/":
   case "+":
+  case "%":
     valuesStack.push(inputString)
     inputString = ""
     operatorsStack.push(input)
@@ -60,7 +117,6 @@ function displayInput(e){
 
     total = operate([numberOne, operator, numberTwo]).toString()
     display.value = total
-
 
     inputString = total
     break;
@@ -77,7 +133,6 @@ function displayInput(e){
     total = operate([numberOne, operator, numberTwo]).toString()
     valuesStack.push(total)
     display.value = total
-
   }
 }
 
