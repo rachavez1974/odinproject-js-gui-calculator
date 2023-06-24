@@ -1,4 +1,90 @@
 body {
-  margin: 100px;
-  background: 33FFE3;
+  margin: 70px;
+  background-image: url("./calculator-background.jpeg");
+  margin-top: 140px;
+  margin-right: 500px;
+  margin-left: 500px;
+  margin-bottom: 200px;
 }
+
+
+.container-calculator {
+  background: #33FFE3;
+  height: 590px;
+  width: 350px;
+  border-style: solid;
+  border: 10mm ridge rgba(211, 220, 50, .6);
+  border-radius: 20px;
+}
+
+.line-calculator {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  width: 290px;
+  margin-top: 40px;
+  border-style: solid;
+  border: 8mm ridge rgba(211, 220, 50, .6);
+  display: block;
+}
+
+.container-calculator > input {
+  background: #848087;
+  font-size: 15px;
+  text-align: right;
+  color: white;
+  height: 20px;
+  width: 280px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-top: 30px;
+  border: 5px;
+  border-style: solid;
+  border: 4mm ridge rgba(47, 15, 31, 1);
+}
+
+.numbers {
+  background: #848087;
+  text-align: center;
+  height: 45px;
+  width: 45px;
+  margin-left: 30px;
+  margin-top: 25px;
+  border: 5px;
+  display: inline-block;
+  border: 2px;
+  border-style: solid;
+  border: 1mm ridge rgba(47, 15, 31, 1);
+  border-radius: 10px;
+}
+
+.numbers > button {
+  color: black;
+  background-color: white;
+  margin-top: 5px;
+  display:  table-cell;
+  width: 75%;
+  height: 35px;
+  padding-top: 20;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.equal-div {
+  background: #848087;
+  text-align: center;
+  height: 50px;
+  width: 135px;
+  margin-left: 25px;
+  border: 5px;
+  display: inline-block;
+  border: 2px;
+  border-style: solid;
+  border: 1mm ridge rgba(47, 15, 31, 1);
+  border-radius: 10px;
+}
+
+
+
