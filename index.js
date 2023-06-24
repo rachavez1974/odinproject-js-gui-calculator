@@ -68,7 +68,7 @@ const mod = (numbers) => {
 
 
 function operate(numbersAndOperator){
-  console.log(numbersAndOperator)
+
   if(numbersAndOperator.includes('+')){
     return sum([numbersAndOperator[0], numbersAndOperator[2]])
   }else if(numbersAndOperator.includes('X')){
@@ -80,6 +80,7 @@ function operate(numbersAndOperator){
   }else if(numbersAndOperator.includes('%')){
     return mod([numbersAndOperator[0], numbersAndOperator[2]])
   }
+
 }
 
 function displayInput(e){
@@ -91,6 +92,21 @@ function displayInput(e){
   let numberOne
   let operator
   let total
+
+  function displayErrorMessage(){
+
+    let container = document.getElementById('calculator')
+    container.style.display = 'flex';
+    display.value = "Error! No Division by Zero"
+    setTimeout(codingCourse, 2000)
+
+    function codingCourse() {
+      valuesStack = []
+      operatorsStack = []
+      inputString = ""
+      container.style.display = 'block';
+    }
+  }
 
   switch(input){
   case 'AC':
@@ -115,9 +131,14 @@ function displayInput(e){
     numberOne = valuesStack.pop()
     operator = operatorsStack.shift()
 
-    total = operate([numberOne, operator, numberTwo]).toString()
-    display.value = total
+    total = (Math.round(operate([numberOne, operator, numberTwo])*10)/10).toString()
 
+    if(total === 'Infinity'){
+      displayErrorMessage()
+      return
+    }
+
+    display.value = total
     inputString = total
     break;
   default:
@@ -130,12 +151,15 @@ function displayInput(e){
     numberOne = valuesStack.pop()
     operator = operatorsStack.shift()
 
-    total = operate([numberOne, operator, numberTwo]).toString()
+    total = (Math.round(operate([numberOne, operator, numberTwo])*10)/10).toString()
+    if(total === 'Infinity'){
+      displayErrorMessage()
+      return
+    }
     valuesStack.push(total)
     display.value = total
   }
 }
-
 
 function makeNumberDivs(){
   return [1, 2, 3, '/', 4, 5, 6, 'X', 7, 8, 9, '-', 0, 'AC', '+', '.', '=', '%'].map(input => {
@@ -164,7 +188,7 @@ function dropCalculator(){
 
   let calculatorSpan = document.createElement("span")
   calculatorSpan.classList.add('line-calculator')
-  calculator.id = 'calculator-line'
+  calculatorSpan.id = 'calculator-line'
   calculator.appendChild(calculatorSpan)
 
   let numberDivs = makeNumberDivs()
